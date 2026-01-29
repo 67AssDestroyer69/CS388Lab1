@@ -1,49 +1,50 @@
 package com.example.rothcs388lab1
+import java.util.Scanner
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import android.view.View
-class MainActivity : AppCompatActivity() {
-    var counter = 0
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        val textView = findViewById<TextView>(R.id.textView)
+fun main() {
+    val scanner = Scanner(System.`in`)
+    var gameOver = false
 
+    println("Welcome to the Porn Game!")
+    println("You find yourself in a dimly lit room with a mysterious figure.")
+    println("What do you want to do?")
+    println("1. Approach the figure")
+    println("2. Leave the room")
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+    while (!gameOver) {
+        val choice = scanner.nextInt()
 
-        val button = findViewById<Button>(R.id.button)
-        val upgradeButton = findViewById<Button>(R.id.upgradeBtn)
-        button.setOnClickListener{
-            Toast.makeText(it.context, "Clicked Button!", Toast.LENGTH_SHORT).show()
-            counter++
-            textView.text = counter.toString()
-
-            if (counter >= 100){
-                upgradeButton.visibility = View.VISIBLE
-                upgradeButton.setOnClickListener{
-                    button.text = "Add 2"
-
-                    button.setOnClickListener{
-                        counter += 2
-                        textView.text = counter.toString()
+        when (choice) {
+            1 -> {
+                println("You approach the figure and they start to undress slowly.")
+                println("What do you do next?")
+                println("1. Join them")
+                println("2. Watch from a distance")
+                val nextChoice = scanner.nextInt()
+                when (nextChoice) {
+                    1 -> {
+                        println("You join them and start making out passionately.")
+                        println("The figure leads you to a bed and you both start to explore each other's bodies.")
+                        println("You have a wild night of passion together.")
+                        gameOver = true
                     }
-
-                    upgradeButton.visibility = View.INVISIBLE
+                    2 -> {
+                        println("You decide to watch from a distance, enjoying the show.")
+                        println("The figure notices you and smiles, beckoning you to join.")
+                        println("You hesitantly approach and they take your hand, leading you to the bed.")
+                        println("You spend the night together, exploring each other's desires.")
+                        gameOver = true
+                    }
+                    else -> println("Invalid choice. Please try again.")
                 }
             }
+            2 -> {
+                println("You decide to leave the room, missing out on a potential adventure.")
+                gameOver = true
+            }
+            else -> println("Invalid choice. Please try again.")
         }
     }
+
+    println("Thanks for playing the Porn Game!")
 }
